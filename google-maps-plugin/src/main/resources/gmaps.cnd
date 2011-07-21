@@ -1,0 +1,5 @@
+<'gmaps'='http://forge.onehippo.org/gmaps/nt/1.0'>
+<'hippo'='http://www.onehippo.org/jcr/hippo/nt/2.0.2'>
+<'hippostd'='http://www.onehippo.org/jcr/hippostd/nt/2.0'>
+
+[gmaps:location] > hippo:compound, hippostd:relaxed

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en"
+      lang="en">
+
+    <wicket:head>
+        <link wicket:id="jquery-ui-css" rel="stylesheet" type="text/css" href="jquery-ui-1.8.14.custom.css"/>
+        <link wicket:id="geo-autocomplete-css" rel="stylesheet" type="text/css" href="geo-autocomplete.css"/>
+    </wicket:head>
+
+    <wicket:panel>
+
+        <div class="hippo-editor-field">
+            <h3 wicket:id="autocompleteLabel" class="hippo-editor-field-title">
+                <span>Search</span>
+            </h3>
+
+            <div id="autocomplete" wicket:id="autocomplete" class="hippo-editor-field-subfield autocomplete">
+                <div class="hippo-editor-field-value">
+                    <div class="hippo-editor-field-value-container">
+                        <input type="text"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img wicket:id="mapImage"/>
+        <div id="map" wicket:id="map"></div>
+
+        <div wicket:id="view">
+          <div wicket:id="item">[ render service goes here ]</div>
+        </div>
+
+    </wicket:panel>
+</html>
