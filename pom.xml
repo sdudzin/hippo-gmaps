@@ -1,7 +1,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.onehippo.plugins</groupId>
-    <artifactId>google-maps-plugin-parent</artifactId>
+    <artifactId>google-maps-plugin-reactor</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 

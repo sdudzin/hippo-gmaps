@@ -77,8 +77,11 @@
     <lib.spring-js.version>2.0.5.RELEASE</lib.spring-js.version>
     
      <!--uncomment to enable automatic export-->
-    <hippoecm.export.dir>${project.basedir}/content/src/main/resources</hippoecm.export.dir>
+    <!--<hippoecm.export.dir>${project.basedir}/content/src/main/resources</hippoecm.export.dir>-->
 
+      <!-- override default hippo versions -->
+      <hippo.repository.version>2.20.01</hippo.repository.version>
+      <hippo.hst.version>2.22.02</hippo.hst.version>
   </properties>
 
   <repositories>
