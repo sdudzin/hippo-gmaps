@@ -3,8 +3,6 @@ package org.example.beans.compound;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoItem;
-import org.hippoecm.hst.content.beans.standard.HippoMirror;
-import org.hippoecm.hst.content.beans.standard.HippoResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
