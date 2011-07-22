@@ -15,7 +15,7 @@
  *
  */
 
-package org.onehippo.forge.gmaps;
+package org.onehippo.plugins.gmaps;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.IHeaderContributor;

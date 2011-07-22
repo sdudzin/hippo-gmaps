@@ -183,7 +183,7 @@
                     <sv:value>${cluster.id}.field</sv:value>
                 </sv:property>
                 <sv:property sv:name="plugin.class" sv:type="String">
-                    <sv:value>org.onehippo.forge.gmaps.GmapsPlugin</sv:value>
+                    <sv:value>org.onehippo.plugins.gmaps.GmapsPlugin</sv:value>
                 </sv:property>
                 <sv:property sv:name="wicket.id" sv:type="String">
                     <sv:value>${wicket.id}</sv:value>
@@ -209,7 +209,7 @@
                     <sv:value>${mode}</sv:value>
                 </sv:property>
                 <sv:property sv:name="plugin.class" sv:type="String">
-                    <sv:value>org.onehippo.forge.gmaps.LongtitudeFieldPlugin</sv:value>
+                    <sv:value>org.onehippo.plugins.gmaps.LongtitudeFieldPlugin</sv:value>
                 </sv:property>
                 <sv:property sv:name="wicket.id" sv:type="String">
                     <sv:value>${cluster.id}.field</sv:value>
@@ -240,7 +240,7 @@
                     <sv:value>${mode}</sv:value>
                 </sv:property>
                 <sv:property sv:name="plugin.class" sv:type="String">
-                    <sv:value>org.onehippo.forge.gmaps.LatitudeFieldPlugin</sv:value>
+                    <sv:value>org.onehippo.plugins.gmaps.LatitudeFieldPlugin</sv:value>
                 </sv:property>
                 <sv:property sv:name="wicket.id" sv:type="String">
                     <sv:value>${cluster.id}.field</sv:value>
@@ -271,7 +271,7 @@
                     <sv:value>${mode}</sv:value>
                 </sv:property>
                 <sv:property sv:name="plugin.class" sv:type="String">
-                    <sv:value>org.onehippo.forge.gmaps.ZoomFieldPlugin</sv:value>
+                    <sv:value>org.onehippo.plugins.gmaps.ZoomFieldPlugin</sv:value>
                 </sv:property>
                 <sv:property sv:name="wicket.id" sv:type="String">
                     <sv:value>${cluster.id}.field</sv:value>

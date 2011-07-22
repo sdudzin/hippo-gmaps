@@ -15,7 +15,7 @@
  *
  */
 
-package org.onehippo.forge.gmaps;
+package org.onehippo.plugins.gmaps;
 
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.Model;
@@ -23,11 +23,11 @@ import org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin;
 import org.hippoecm.frontend.plugin.IPluginContext;
 import org.hippoecm.frontend.plugin.config.IPluginConfig;
 
-public class ZoomFieldPlugin extends PropertyFieldPlugin {
+public class LongtitudeFieldPlugin extends PropertyFieldPlugin {
 
-    private static final String CLASS = "gmaps-zoom";
+    private static final String CLASS = "gmaps-lng";
 
-    public ZoomFieldPlugin(IPluginContext context, IPluginConfig config) {
+    public LongtitudeFieldPlugin(IPluginContext context, IPluginConfig config) {
         super(context, config);
 
         add(new AttributeAppender("class", new Model<String>(CLASS), " "));
