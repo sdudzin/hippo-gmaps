@@ -10,4 +10,8 @@
         <module>demo</module>
     </modules>
 
+    <scm>
+        <connection>scm:git:git://github.com/sdudzin/hippo-gmaps.git</connection>
+    </scm>
+
 </project>

@@ -9,7 +9,6 @@
     <description>Google Maps Plugin</description>
 
     <properties>
-        <!--<hippoecm.version>[2.12.00, 2.12.99]</hippoecm.version>-->
         <hippoecm.version>2.20.00</hippoecm.version>
     </properties>
 
