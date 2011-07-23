@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -14,7 +13,7 @@
     <description>My Hippo Project</description>
     <groupId>org.example</groupId>
     <artifactId>myhippoproject</artifactId>
-    <version>1.01.00-SNAPSHOT</version>
+    <version>1.01.00</version>
     <packaging>pom</packaging>
 
     <!--
@@ -24,28 +23,28 @@
       DO NOT remove these tags but instead fill them in appropriately as needed,
       UNLESS the inherited values are valid for your project.
     -->
-    <url/>
-    <inceptionYear/>
-    <organization/>
+    <url />
+    <inceptionYear />
+    <organization />
     <licenses>
-        <license/>
+        <license />
     </licenses>
     <mailingLists>
-        <mailingList/>
+        <mailingList />
     </mailingLists>
     <developers>
-        <developer/>
+        <developer />
     </developers>
     <contributors>
-        <contributor/>
+        <contributor />
     </contributors>
-    <issueManagement/>
+    <issueManagement />
     <scm>
         <url>https://github.com/sdudzin/hippo-gmaps</url>
         <connection>scm:git:git://github.com/sdudzin/hippo-gmaps.git</connection>
         <developerConnection>scm:git:git@github.com:sdudzin/hippo-gmaps.git</developerConnection>
     </scm>
-    <ciManagement/>
+    <ciManagement />
     <distributionManagement>
       <repository>
         <id>releases</id>
