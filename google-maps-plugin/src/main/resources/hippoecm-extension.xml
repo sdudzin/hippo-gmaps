@@ -12,7 +12,7 @@
       <sv:value>10049</sv:value>
     </sv:property>
     <sv:property sv:name="hippo:namespace" sv:type="String">
-      <sv:value>http://forge.onehippo.org/gmaps/nt/1.0</sv:value>
+      <sv:value>http://plugins.onehippo.org/gmaps/nt/1.0</sv:value>
     </sv:property>
     <sv:property sv:name="hippo:nodetypesresource" sv:type="String">
       <sv:value>gmaps.cnd</sv:value>

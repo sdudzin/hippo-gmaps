@@ -54,7 +54,7 @@
                 <sv:value>true</sv:value>
             </sv:property>
             <sv:property sv:name="hipposysedit:uri" sv:type="String">
-                <sv:value>http://forge.onehippo.org/gmaps/nt/1.0</sv:value>
+                <sv:value>http://plugins.onehippo.org/gmaps/nt/1.0</sv:value>
             </sv:property>
             <sv:node sv:name="latitude">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
