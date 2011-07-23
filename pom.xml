@@ -15,5 +15,15 @@
         <connection>scm:git:git://github.com/sdudzin/hippo-gmaps.git</connection>
         <developerConnection>scm:git:git@github.com:sdudzin/hippo-gmaps.git</developerConnection>
     </scm>
+    <distributionManagement>
+      <repository>
+        <id>releases</id>
+        <url>${release.repo}</url>
+      </repository>
+      <snapshotRepository>
+        <id>snapshots</id>
+        <url>${snapshots.repo}</url>
+      </snapshotRepository>
+    </distributionManagement>
 
 </project>
