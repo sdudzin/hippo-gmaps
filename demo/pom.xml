@@ -13,7 +13,7 @@
     <description>My Hippo Project</description>
     <groupId>org.example</groupId>
     <artifactId>myhippoproject</artifactId>
-    <version>1.01.00</version>
+    <version>1.01.01-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <!--

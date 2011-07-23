@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.onehippo.plugins</groupId>
         <artifactId>google-maps-plugin-reactor</artifactId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
     <packaging>jar</packaging>
     <name>Hippo CMS Google Maps Plugin</name>

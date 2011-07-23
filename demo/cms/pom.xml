@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.example</groupId>
     <artifactId>myhippoproject</artifactId>
-    <version>1.01.00</version>
+    <version>1.01.01-SNAPSHOT</version>
   </parent>
 
   <name>My Hippo Project CMS</name>
@@ -75,7 +75,7 @@
     <dependency>
       <groupId>org.example</groupId>
       <artifactId>myhippoproject-content</artifactId>
-      <version>1.01.00</version>
+      <version>1.01.01-SNAPSHOT</version>
       <type>jar</type>
     </dependency>
     
@@ -96,7 +96,7 @@
     <dependency>
         <groupId>org.onehippo.plugins</groupId>
         <artifactId>google-maps-plugin</artifactId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
