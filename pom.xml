@@ -5,7 +5,7 @@
   <groupId>org.onehippo.plugins</groupId>
   <artifactId>google-maps-plugin-reactor</artifactId>
   <version>1.1-SNAPSHOT</version>
-  <name>Hippo CMS Google Maps Plugin Reactor</name>
+  <name>GoogleMaps Hippo Plugin Reactor</name>
   <packaging>pom</packaging>
 
   <modules>

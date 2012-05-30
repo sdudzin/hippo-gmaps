@@ -41,8 +41,10 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
     private static final Logger LOGGER = LoggerFactory.getLogger(GmapsPlugin.class);
 
     private static final String MAPS_JS = "hippo-gmaps-plugin.js";
-    private static final String JQUERY_JS = "jquery-1.6.2.min.js";
-    private static final String JQUERY_UI_JS = "jquery-ui-1.8.14.custom.min.js";
+    private static final String JQUERY_JS = "jquery-1.7.2.min.js";
+    private static final String JQUERY_UI_JS = "jquery-ui-1.8.20.custom.min.js";
+    private static final String JQUERY_UI_CSS = "jquery-ui-1.8.20.custom.css";
+    private static final String AUTOCOMPLETE_CSS = "ui.geo_autocomplete.css";
     private static final String AUTOCOMPLETE_JS = "ui.geo_autocomplete.js";
     private static final String DEFAULT_ZOOM_LEVEL = "8";
 
@@ -64,8 +66,8 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
         autocompleteId = autocompleteContainer.getMarkupId();
         add(autocompleteContainer);
 
-        add(new StyleSheetReference("jquery-ui-css", getClass(), "jquery-ui-1.8.14.custom.css"));
-        add(new StyleSheetReference("geo-autocomplete-css", getClass(), "geo-autocomplete.css"));
+        add(new StyleSheetReference("jquery-ui-css", getClass(), JQUERY_UI_CSS));
+        add(new StyleSheetReference("geo-autocomplete-css", getClass(), AUTOCOMPLETE_CSS));
 
         setOutputMarkupId(true);
 
@@ -149,7 +151,7 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
                     "function initMap" + mapId + "(){" +
                             "var map = document.getElementById('" + mapId + "');" +
                             "initializeMap(map, " + location[0] + ", " + location[1] + ", " + zoom + ", " + autocompleteId + ");" +
-                    "};"
+                            "};"
                     , mapId + "Js");
 
             response.renderOnDomReadyJavascript(

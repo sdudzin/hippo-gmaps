@@ -69,7 +69,7 @@
         <sv:value>hippotranslation:translated</sv:value>
       </sv:property>
       <sv:property sv:name="jcr:uuid" sv:type="String">
-        <sv:value>7ebebc7d-1ba7-4e5a-8047-b4a72d03492d</sv:value>
+        <sv:value>9ab5959d-d31e-45f0-bccd-1b0a7754b8e1</sv:value>
       </sv:property>
       <sv:property sv:name="googlemapsplugindemo:summary" sv:type="String">
         <sv:value>This is the home page of the generated HST website.</sv:value>
@@ -100,13 +100,13 @@
         <sv:value>2010-01-21T11:34:11.055+01:00</sv:value>
       </sv:property>
       <sv:property sv:name="hippostdpubwf:lastModificationDate" sv:type="Date">
-        <sv:value>2012-05-30T15:48:14.396+02:00</sv:value>
+        <sv:value>2012-05-30T16:59:18.011+02:00</sv:value>
       </sv:property>
       <sv:property sv:name="hippostdpubwf:lastModifiedBy" sv:type="String">
         <sv:value>admin</sv:value>
       </sv:property>
       <sv:property sv:name="hippostdpubwf:publicationDate" sv:type="Date">
-        <sv:value>2012-05-30T15:48:18.114+02:00</sv:value>
+        <sv:value>2012-05-30T16:59:22.628+02:00</sv:value>
       </sv:property>
       <sv:property sv:name="hippotranslation:id" sv:type="String">
         <sv:value>googlemapsplugindemo-common-homepage-id</sv:value>
