@@ -1,16 +1,16 @@
 function initializeMap(mapDiv, lat, lng, zoom, autocompleteId) {
     var latlng = new google.maps.LatLng(lat, lng);
     var myOptions = {
-        zoom: parseInt(zoom),
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        zoom:parseInt(zoom),
+        center:latlng,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(mapDiv, myOptions);
     var markers = new Array();
 
     createMarker(latlng, markers, map);
 
-    google.maps.event.addListener(map, 'click', function(event) {
+    google.maps.event.addListener(map, 'click', function (event) {
         setZoomLevel(map, mapDiv);
         setGeoValues(mapDiv, event.latLng, parseInt(zoom));
         createMarker(event.latLng, markers, map);
@@ -19,13 +19,13 @@ function initializeMap(mapDiv, lat, lng, zoom, autocompleteId) {
     // autocompletion
     var autoInput = $(autocompleteId).find('input');
     autoInput.geo_autocomplete({
-        select: function(_event, _ui) {
+        select:function (_event, _ui) {
             if (_ui.item.viewport) map.fitBounds(_ui.item.viewport);
         }
     });
 }
 
-function setZoomLevel(map, mapDiv){
+function setZoomLevel(map, mapDiv) {
     var container = $(mapDiv).parent();
     var zoomIn = container.find('.gmaps-zoom').find('input');
 
@@ -51,17 +51,18 @@ function createMarker(location, markers, map) {
 
     var clickedLocation = new google.maps.LatLng(location);
     var marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        title: "Location"
+        position:location,
+        map:map,
+        title:"Location",
+        icon:'resources/org.onehippo.plugins.gmaps.GmapsPlugin/images/beachflag.png',
+        animation:google.maps.Animation.DROP
     });
-
     markers.push(marker);
 }
 
 function clearAllMarkers(markers) {
     if (markers) {
-        for (var i=0; i<markers.length; i++) {
+        for (var i = 0; i < markers.length; i++) {
             markers[i].setMap(null);
         }
     }

@@ -45,6 +45,14 @@
                 mapTypeId:google.maps.MapTypeId.ROADMAP
             }
             var map = new google.maps.Map(document.getElementById("map"), myOptions);
+            var image = '<hst:link path="/images/beachflag.png"/>';
+            var beachMarker = new google.maps.Marker({
+                position:myLatlng,
+                map:map,
+                icon:image,
+                animation:google.maps.Animation.DROP
+            });
+
         </script>
 
     </c:otherwise>
