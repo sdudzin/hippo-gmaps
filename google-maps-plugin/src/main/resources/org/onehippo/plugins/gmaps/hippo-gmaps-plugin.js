@@ -20,15 +20,13 @@ function initializeMap(mapDiv, lat, lng, zoom, autocompleteId) {
         createMarker(event.latLng, markers, map);
     });
 
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+        var zoomLevel = map.getZoom();
+        setZoomLevelChanged(mapDiv, zoomLevel);
+    });
+
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
         var place = autocomplete.getPlace();
-        if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-        } else {
-            map.setCenter(place.geometry.location);
-            //using the default zoom level from the plugin
-            map.setZoom(parseInt(zoom));
-        }
         var address = '';
         if (place.address_components) {
             address = [(place.address_components[0] &&
@@ -39,18 +37,27 @@ function initializeMap(mapDiv, lat, lng, zoom, autocompleteId) {
                     place.address_components[2].short_name || '')
             ].join(' ');
         }
+        if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+        } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(parseInt(17));
+        }
         setZoomLevel(mapDiv, map);
-        setGeoValues(mapDiv, place.geometry.location);
-        createMarker(place.geometry.location, markers, map);
+        setGeoValues(mapDiv, map.getCenter());
+        createMarker(map.getCenter(), markers, map);
 
     });
 }
 
-function setZoomLevel(map, mapDiv) {
+function setZoomLevel(mapDiv, mapInstance) {
+    setZoomLevelChanged(mapDiv, mapInstance.getZoom());
+}
+
+function setZoomLevelChanged(mapDiv, newZoom) {
     var container = $(mapDiv).parent();
     var zoomIn = container.find('.gmaps-zoom').find('input');
-
-    zoomIn.val(map.getZoom());
+    zoomIn.val(newZoom);
     zoomIn.change();
 }
 
