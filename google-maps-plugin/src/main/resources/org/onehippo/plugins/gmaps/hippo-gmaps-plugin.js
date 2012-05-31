@@ -9,19 +9,40 @@ function initializeMap(mapDiv, lat, lng, zoom, autocompleteId) {
     var markers = new Array();
 
     createMarker(latlng, markers, map);
+    //Autocomplete via GoogleJS api
+    var input = document.getElementById('searchTextField');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', map);
 
     google.maps.event.addListener(map, 'click', function (event) {
-        setZoomLevel(map, mapDiv);
-        setGeoValues(mapDiv, event.latLng, parseInt(zoom));
+        setZoomLevel(mapDiv, map);
+        setGeoValues(mapDiv, event.latLng);
         createMarker(event.latLng, markers, map);
     });
 
-    // autocompletion
-    var autoInput = $(autocompleteId).find('input');
-    autoInput.geo_autocomplete({
-        select:function (_event, _ui) {
-            if (_ui.item.viewport) map.fitBounds(_ui.item.viewport);
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var place = autocomplete.getPlace();
+        if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+        } else {
+            map.setCenter(place.geometry.location);
+            //using the default zoom level from the plugin
+            map.setZoom(parseInt(zoom));
         }
+        var address = '';
+        if (place.address_components) {
+            address = [(place.address_components[0] &&
+                place.address_components[0].short_name || ''),
+                (place.address_components[1] &&
+                    place.address_components[1].short_name || ''),
+                (place.address_components[2] &&
+                    place.address_components[2].short_name || '')
+            ].join(' ');
+        }
+        setZoomLevel(mapDiv, map);
+        setGeoValues(mapDiv, place.geometry.location);
+        createMarker(place.geometry.location, markers, map);
+
     });
 }
 
