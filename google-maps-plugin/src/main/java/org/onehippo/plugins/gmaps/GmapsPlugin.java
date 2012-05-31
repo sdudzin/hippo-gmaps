@@ -18,12 +18,13 @@
 package org.onehippo.plugins.gmaps;
 
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.ResourceReference;
 import org.apache.wicket.markup.html.IHeaderContributor;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.resources.CompressedResourceReference;
 import org.apache.wicket.markup.html.resources.JavascriptResourceReference;
-import org.apache.wicket.markup.html.resources.StyleSheetReference;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.Model;
 import org.hippoecm.frontend.plugin.IPluginContext;
@@ -39,14 +40,16 @@ import javax.jcr.RepositoryException;
 public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GmapsPlugin.class);
-
-    private static final String MAPS_JS = "hippo-gmaps-plugin.js";
-    private static final String JQUERY_JS = "jquery-1.7.2.min.js";
-    private static final String JQUERY_UI_JS = "jquery-ui-1.8.20.custom.min.js";
-    private static final String JQUERY_UI_CSS = "jquery-ui-1.8.20.custom.css";
+    //External Resources
+    private static final String JQUERY_JS = "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js";
+    private static final String JQUERY_UI_JS = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js";
+    private static final String JQUERY_UI_CSS = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css";
+    //Custom and internal Resources
     private static final String AUTOCOMPLETE_CSS = "ui.geo_autocomplete.css";
     private static final String AUTOCOMPLETE_JS = "ui.geo_autocomplete.js";
-    private static final String DEFAULT_ZOOM_LEVEL = "8";
+    private static final String MAPS_JS = "hippo-gmaps-plugin.js";
+
+    private static final String DEFAULT_ZOOM_LEVEL = "10";
 
     private String autocompleteId;
     private String mapId;
@@ -65,9 +68,6 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
         WebMarkupContainer autocompleteContainer = createAutocompleteComponent("autocomplete");
         autocompleteId = autocompleteContainer.getMarkupId();
         add(autocompleteContainer);
-
-        add(new StyleSheetReference("jquery-ui-css", getClass(), JQUERY_UI_CSS));
-        add(new StyleSheetReference("geo-autocomplete-css", getClass(), AUTOCOMPLETE_CSS));
 
         setOutputMarkupId(true);
 
@@ -132,11 +132,14 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
 
     public void renderHead(IHeaderResponse response) {
         if (IEditor.Mode.EDIT.equals(mode)) {
-            // load jquery
-            JavascriptResourceReference jqueryJs = new JavascriptResourceReference(GmapsPlugin.class, JQUERY_JS);
-            response.renderJavascriptReference(jqueryJs);
-            JavascriptResourceReference jqueryUiJs = new JavascriptResourceReference(GmapsPlugin.class, JQUERY_UI_JS);
-            response.renderJavascriptReference(jqueryUiJs);
+            // load jquery js + css
+            response.renderJavascriptReference(JQUERY_JS);
+            response.renderCSSReference(JQUERY_UI_CSS);
+            response.renderJavascriptReference(JQUERY_UI_JS);
+            // load autocomplete js + css
+            ResourceReference autocompleteCss =
+                    new CompressedResourceReference(GmapsPlugin.class, AUTOCOMPLETE_CSS);
+            response.renderCSSReference(autocompleteCss);
             JavascriptResourceReference autocompleteJs = new JavascriptResourceReference(GmapsPlugin.class, AUTOCOMPLETE_JS);
             response.renderJavascriptReference(autocompleteJs);
 

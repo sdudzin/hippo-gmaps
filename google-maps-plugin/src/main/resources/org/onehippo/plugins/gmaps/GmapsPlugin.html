@@ -4,33 +4,29 @@
       xml:lang="en"
       lang="en">
 
-    <wicket:head>
-        <link wicket:id="jquery-ui-css" rel="stylesheet" type="text/css" href="jquery-ui-1.8.20.custom.css"/>
-        <link wicket:id="geo-autocomplete-css" rel="stylesheet" type="text/css" href="ui.geo_autocomplete.css"/>
-    </wicket:head>
+<wicket:panel>
 
-    <wicket:panel>
+  <div class="hippo-editor-field">
+    <h3 wicket:id="autocompleteLabel" class="hippo-editor-field-title">
+      <span>Search</span>
+    </h3>
 
-        <div class="hippo-editor-field">
-            <h3 wicket:id="autocompleteLabel" class="hippo-editor-field-title">
-                <span>Search</span>
-            </h3>
-
-            <div id="autocomplete" wicket:id="autocomplete" class="hippo-editor-field-subfield autocomplete">
-                <div class="hippo-editor-field-value">
-                    <div class="hippo-editor-field-value-container">
-                        <input type="text"/>
-                    </div>
-                </div>
-            </div>
+    <div id="autocomplete" wicket:id="autocomplete" class="hippo-editor-field-subfield autocomplete">
+      <div class="hippo-editor-field-value">
+        <div class="hippo-editor-field-value-container">
+          <input type="text"/>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <img wicket:id="mapImage"/>
-        <div id="map" wicket:id="map"></div>
+  <img wicket:id="mapImage"/>
 
-        <div wicket:id="view">
-          <div wicket:id="item">[ render service goes here ]</div>
-        </div>
+  <div id="map" wicket:id="map"></div>
 
-    </wicket:panel>
+  <div wicket:id="view">
+    <div wicket:id="item">[ render service goes here ]</div>
+  </div>
+
+</wicket:panel>
 </html>
