@@ -40,16 +40,13 @@ import javax.jcr.RepositoryException;
 public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GmapsPlugin.class);
-    //External Resources
-    private static final String JQUERY_JS = "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js";
-    private static final String JQUERY_UI_JS = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js";
-    private static final String JQUERY_UI_CSS = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css";
-    //Custom and internal Resources
-    private static final String MAPS_JS = "hippo-gmaps-plugin.js";
 
+    private static final String MAPS_JS = "hippo-gmaps-plugin.js";
+    private static final String JQUERY_JS = "jquery-1.7.2.min.js";
+    private static final String JQUERY_UI_JS = "jquery-ui-1.8.20.custom.min.js";
+    private static final String JQUERY_UI_CSS = "jquery-ui-1.8.20.custom.css";
     private static final String DEFAULT_ZOOM_LEVEL = "17";
 
-    private String autocompleteId;
     private String mapId;
     private IEditor.Mode mode;
 
@@ -64,7 +61,6 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
         add(autocompleteLabel);
 
         WebMarkupContainer autocompleteContainer = createAutocompleteComponent("autocomplete");
-        autocompleteId = autocompleteContainer.getMarkupId();
         add(autocompleteContainer);
 
         setOutputMarkupId(true);
@@ -131,10 +127,15 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
 
     public void renderHead(IHeaderResponse response) {
         if (IEditor.Mode.EDIT.equals(mode)) {
-            // load jquery js + css
-            response.renderJavascriptReference(JQUERY_JS);
-            response.renderCSSReference(JQUERY_UI_CSS);
-            response.renderJavascriptReference(JQUERY_UI_JS);
+            // load jquery
+            JavascriptResourceReference jqueryJs = new JavascriptResourceReference(GmapsPlugin.class, JQUERY_JS);
+            response.renderJavascriptReference(jqueryJs);
+            // load jqueryUi js + css
+            ResourceReference jqueryUiCss =
+                    new CompressedResourceReference(GmapsPlugin.class, JQUERY_UI_CSS);
+            response.renderCSSReference(jqueryUiCss);
+            JavascriptResourceReference jqueryUiJs = new JavascriptResourceReference(GmapsPlugin.class, JQUERY_UI_JS);
+            response.renderJavascriptReference(jqueryUiJs);
 
             // custom functions
             JavascriptResourceReference jsResourceReference = new JavascriptResourceReference(GmapsPlugin.class, MAPS_JS);
@@ -144,9 +145,10 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
             String[] location = getLocation();
             String zoom = getZoom();
             response.renderJavascript(
-                    "function initMap" + mapId + "(){" +
+                    "function initMap" +
+                            mapId + "(){" +
                             "var map = document.getElementById('" + mapId + "');" +
-                            "initializeMap(map, " + location[0] + ", " + location[1] + ", " + zoom + ", " + autocompleteId + ");" +
+                            "initializeMap(map, " + location[0] + ", " + location[1] + ", " + zoom + ");" +
                             "};"
                     , mapId + "Js");
 

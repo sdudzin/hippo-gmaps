@@ -1,4 +1,4 @@
-function initializeMap(mapDiv, lat, lng, zoom, autocompleteId) {
+function initializeMap(mapDiv, lat, lng, zoom) {
     var latlng = new google.maps.LatLng(lat, lng);
     var myOptions = {
         zoom:parseInt(zoom),
