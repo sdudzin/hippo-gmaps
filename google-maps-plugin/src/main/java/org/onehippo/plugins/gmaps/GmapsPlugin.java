@@ -45,6 +45,7 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
     private static final String JQUERY_JS = "jquery-1.7.2.min.js";
     private static final String JQUERY_UI_JS = "jquery-ui-1.8.20.custom.min.js";
     private static final String JQUERY_UI_CSS = "jquery-ui-1.8.20.custom.css";
+    private static final String AUTOCOMPLETE_CSS = "autocomplete.css";
     private static final String DEFAULT_ZOOM_LEVEL = "17";
 
     private String mapId;
@@ -137,6 +138,10 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
             JavascriptResourceReference jqueryUiJs = new JavascriptResourceReference(GmapsPlugin.class, JQUERY_UI_JS);
             response.renderJavascriptReference(jqueryUiJs);
 
+            //autocomplete css
+            ResourceReference autocompleteCss =
+                    new CompressedResourceReference(GmapsPlugin.class, AUTOCOMPLETE_CSS);
+            response.renderCSSReference(autocompleteCss);
             // custom functions
             JavascriptResourceReference jsResourceReference = new JavascriptResourceReference(GmapsPlugin.class, MAPS_JS);
             response.renderJavascriptReference(jsResourceReference);
