@@ -18,12 +18,13 @@
 package org.onehippo.plugins.gmaps;
 
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.ResourceReference;
 import org.apache.wicket.markup.html.IHeaderContributor;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.resources.CompressedResourceReference;
 import org.apache.wicket.markup.html.resources.JavascriptResourceReference;
-import org.apache.wicket.markup.html.resources.StyleSheetReference;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.Model;
 import org.hippoecm.frontend.plugin.IPluginContext;
@@ -41,12 +42,12 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
     private static final Logger LOGGER = LoggerFactory.getLogger(GmapsPlugin.class);
 
     private static final String MAPS_JS = "hippo-gmaps-plugin.js";
-    private static final String JQUERY_JS = "jquery-1.6.2.min.js";
-    private static final String JQUERY_UI_JS = "jquery-ui-1.8.14.custom.min.js";
-    private static final String AUTOCOMPLETE_JS = "ui.geo_autocomplete.js";
-    private static final String DEFAULT_ZOOM_LEVEL = "8";
+    private static final String JQUERY_JS = "jquery-1.7.2.min.js";
+    private static final String JQUERY_UI_JS = "jquery-ui-1.8.20.custom.min.js";
+    private static final String JQUERY_UI_CSS = "jquery-ui-1.8.20.custom.css";
+    private static final String AUTOCOMPLETE_CSS = "autocomplete.css";
+    private static final String DEFAULT_ZOOM_LEVEL = "17";
 
-    private String autocompleteId;
     private String mapId;
     private IEditor.Mode mode;
 
@@ -61,11 +62,7 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
         add(autocompleteLabel);
 
         WebMarkupContainer autocompleteContainer = createAutocompleteComponent("autocomplete");
-        autocompleteId = autocompleteContainer.getMarkupId();
         add(autocompleteContainer);
-
-        add(new StyleSheetReference("jquery-ui-css", getClass(), "jquery-ui-1.8.14.custom.css"));
-        add(new StyleSheetReference("geo-autocomplete-css", getClass(), "geo-autocomplete.css"));
 
         setOutputMarkupId(true);
 
@@ -102,13 +99,14 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
 
     private Image createStaticMapImage() {
         final String mapImgSrc = "http://maps.google.com/maps/api/staticmap?" +
-                "&zoom=" + getZoom() + "&" +
-                "size=300x300" +
+                "&zoom=" + getZoom() +
+                "&size=300x300" +
                 "&maptype=roadmap" +
                 "&markers=color:green|" +
                 getLocation()[0] + "," +
                 getLocation()[1] +
-                "&sensor=true";
+                "&sensor=true" +
+                "&libraries=places";
 
         Image mapImage = new Image("mapImage");
 
@@ -133,11 +131,17 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
             // load jquery
             JavascriptResourceReference jqueryJs = new JavascriptResourceReference(GmapsPlugin.class, JQUERY_JS);
             response.renderJavascriptReference(jqueryJs);
+            // load jqueryUi js + css
+            ResourceReference jqueryUiCss =
+                    new CompressedResourceReference(GmapsPlugin.class, JQUERY_UI_CSS);
+            response.renderCSSReference(jqueryUiCss);
             JavascriptResourceReference jqueryUiJs = new JavascriptResourceReference(GmapsPlugin.class, JQUERY_UI_JS);
             response.renderJavascriptReference(jqueryUiJs);
-            JavascriptResourceReference autocompleteJs = new JavascriptResourceReference(GmapsPlugin.class, AUTOCOMPLETE_JS);
-            response.renderJavascriptReference(autocompleteJs);
 
+            //autocomplete css
+            ResourceReference autocompleteCss =
+                    new CompressedResourceReference(GmapsPlugin.class, AUTOCOMPLETE_CSS);
+            response.renderCSSReference(autocompleteCss);
             // custom functions
             JavascriptResourceReference jsResourceReference = new JavascriptResourceReference(GmapsPlugin.class, MAPS_JS);
             response.renderJavascriptReference(jsResourceReference);
@@ -146,14 +150,15 @@ public class GmapsPlugin extends ListViewPlugin implements IHeaderContributor {
             String[] location = getLocation();
             String zoom = getZoom();
             response.renderJavascript(
-                    "function initMap" + mapId + "(){" +
+                    "function initMap" +
+                            mapId + "(){" +
                             "var map = document.getElementById('" + mapId + "');" +
-                            "initializeMap(map, " + location[0] + ", " + location[1] + ", " + zoom + ", " + autocompleteId + ");" +
-                    "};"
+                            "initializeMap(map, " + location[0] + ", " + location[1] + ", " + zoom + ");" +
+                            "};"
                     , mapId + "Js");
 
             response.renderOnDomReadyJavascript(
-                    "$.getScript('http://maps.google.com/maps/api/js?sensor=true&callback=initMap" + mapId + "');"
+                    "$.getScript('http://maps.google.com/maps/api/js?sensor=true&libraries=places&callback=initMap" + mapId + "');"
             );
         }
     }
